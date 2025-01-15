@@ -20,6 +20,14 @@ const scene = new THREE.Scene();
 const video = document.getElementById("video");
 const videoTexture = new THREE.VideoTexture(video);
 videoTexture.colorSpace = THREE.SRGBColorSpace;
+video.addEventListener(
+  "loadeddata",
+  function () {
+    onResize();
+    video.play();
+  },
+  false
+);
 
 const responsivePlaneGeo = new THREE.PlaneGeometry(1, 1);
 const responsivePlaneMat = new THREE.MeshBasicMaterial({
